@@ -1,0 +1,78 @@
+﻿@model LikeActivityBindingModel
+@{
+    ViewData["Title"] = "Like Activity";
+}
+
+<h1>Like Activity Viev</h1>
+
+<form class="needs-validation" method="post" action="/LikeActivity/StartActivity" novalidate>
+    <div class="form-group">
+        <label for="channelName">Channel Name</label>
+        <input type="text" class="form-control" id="channelName" name="channelName" aria-describedby="channelHep" placeholder="Enter channel name" required />
+        <small id="channelHep" class="form-text text-muted">Enter your channel name like "Electronic Dream" or channel public link like "@@electronic_d"</small>
+    </div>
+    <div class="row">
+        <div class="col form-group">
+            <label for="initialMessage">Initial message</label>
+            <textarea class="form-control" id="initialMessage" name="InitialMessage" rows="3" aria-activedescendant="initialDesc"></textarea>
+            <small id="initialDesc" class="form-text text-muted">This text will be shown before a first post will be posted</small>
+        </div>
+        <div class="col form-group">
+            <label for="finalMessage">Final message</label>
+            <textarea class="form-control" id="finalMessage" rows="3" name="FinalMessage" aria-activedescendant="finalDesc"></textarea>
+            <small id="finalDesc" class="form-text text-muted">This text will be shown after a last post will be posted</small>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="step">Step</label>
+        <input type="number" class="form-control" id="step" name="Step" aria-describedby="stepHelp" />
+        <small id="stepHelp" class="form-text text-muted">Necessary count of likes for next post. Example: if step will be 5 then first post will be posted at 0 likes, second at 5 likes, third at 10 likes and so on</small>
+    </div>
+    <div class="form-group">
+        <label for="folderPath">Input folder path</label>
+        <input type="text" class="form-control" id="folderPath" name="FolderPath" placeholder="Input path to a folder which contain images or to a folder with child folders which contains images" />
+    </div>
+    <fieldset class="form-group">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="TimeRadio" id="timeRadio" value="timeOption" />
+            <label class="form-check-label" for="timeRadio">Time limit</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" name="CountRadio" id="countRadio" value="countOption" />
+            <label class="form-check-label" for="countRadio">Count limit</label>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label for="maxMinutes">Max duration in minutes</label>
+                <input type="number" class="form-control" id="maxMinutes" name="maxMinutes" plaseholder="Activity end time" />
+            </div>
+            <div class="col">
+                <label for="maxPosts">Max postst</label>
+                <input type="number" class="form-control" id="maxPosts" name="MaxPosts" placejolder="Max posts" />
+            </div>
+        </div>
+    </fieldset>    
+     <button class="btn btn-primary" type="submit" value="submit">Submit form</button>
+</form>
+
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.getElementsByClassName('needs-validation');
+    // Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
